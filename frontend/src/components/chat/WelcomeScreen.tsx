@@ -37,7 +37,8 @@ export default function WelcomeScreen(props: Props) {
 
   const chatProfiles = config?.chatProfiles;
 
-  const allowHtml = config?.features?.unsafe_allow_html;
+  //  const allowHtml = config?.features?.unsafe_allow_html;
+  const allowHtml = true;
   const latex = config?.features?.latex;
 
   useEffect(() => {
@@ -70,7 +71,13 @@ export default function WelcomeScreen(props: Props) {
       }
     }
 
-    return <Logo className="w-[200px] mb-2" />;
+    return (
+      <div className="flex flex-col gap-2 mb-2 items-center">
+        <Logo className="w-[100px] mb-2" />
+        <Markdown>## 阴道镜报告解读助手👩🏻‍⚕️</Markdown>
+        <Markdown>HKUST(GZ) - 北京协和医学院</Markdown>
+      </div>
+    );
   }, [chatProfiles, chatProfile]);
 
   if (hasMessage(messages)) return null;
